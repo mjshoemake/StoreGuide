@@ -20,7 +20,5 @@
     <property name="website" type="string" not-null="false"/>
     <property name="store_email" type="string" not-null="false"/>
     <property name="searchable" type="string" not-null="false"/>
-    <property name="password" type="string" not-null="false"/>
-    <property name="login_enabled" type="string" not-null="false"/>
   </class>
 </hibernate-mapping>

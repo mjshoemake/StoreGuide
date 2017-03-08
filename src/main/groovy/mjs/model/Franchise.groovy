@@ -18,6 +18,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  @Table(name="franchise")
  @JsonIgnoreProperties(ignoreUnknown = true)
 class Franchise extends ModelLoggable {
+
+     public Franchise() {
+     }
+
      /**
       * The PK for this object. This is how an object should be
       * referenced in the database.
