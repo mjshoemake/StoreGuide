@@ -8,7 +8,7 @@ import mjs.model.User;
 import org.junit.Before;
 import org.junit.Test;
 
-public class UsersServiceTest extends AbstractHibernateTest {
+public class UserServiceTest extends AbstractHibernateTest {
 
     UserService svc;
 
