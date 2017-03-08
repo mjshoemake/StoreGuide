@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <class name="mjs.model.User" table="user">
+    <id name="user_pk" column="user_pk" type="int">
+      <generator class="increment"/>
+    </id>
+    <property name="username" type="string" not-null="true"/>
+    <property name="fname" type="string" not-null="true"/>
+    <property name="lname" type="string" not-null="true"/>
+    <property name="email" type="string" not-null="true"/>
+    <property name="city" type="string" not-null="true"/>
+    <property name="state" type="string" not-null="true"/>
+    <property name="searchable" type="string" not-null="true"/>
+    <property name="password" type="string" not-null="true"/>
+    <property name="login_enabled" type="string" not-null="true"/>
+  </class>
+</hibernate-mapping>

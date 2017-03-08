@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <class name="mjs.model.Store" table="store">
+    <id name="store_pk" column="store_pk" type="int">
+      <generator class="increment"/>
+    </id>
+    <property name="franchise_pk" type="int"/>
+    <property name="name" type="string" not-null="true"/>
+    <property name="addr1" type="string" not-null="true"/>
+    <property name="addr2" type="string" not-null="false"/>
+    <property name="addr3" type="string" not-null="false"/>
+    <property name="addr4" type="string" not-null="false"/>
+    <property name="city" type="string" not-null="false"/>
+    <property name="state" type="string" not-null="false"/>
+    <property name="zip" type="string" not-null="false"/>
+    <property name="website" type="string" not-null="false"/>
+    <property name="store_email" type="string" not-null="false"/>
+    <property name="searchable" type="string" not-null="false"/>
+    <property name="password" type="string" not-null="false"/>
+    <property name="login_enabled" type="string" not-null="false"/>
+  </class>
+</hibernate-mapping>
