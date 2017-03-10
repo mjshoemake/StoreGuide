@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import mjs.common.exceptions.CoreException;
 import mjs.common.exceptions.ModelException;
 import mjs.common.utils.LogUtils;
 import org.apache.log4j.Logger;
@@ -59,7 +60,10 @@ public class BaseService extends SeerObject {
         sessionFactory = factory;
     }
 
-    public Session openSession() {
+    public Session openSession() throws CoreException {
+        log.info("SessionFactory:");
+        LogUtils.info(log, sessionFactory.getSessionFactoryOptions(), "   ", true);
+
         log.debug("Requesting Hibernate session... sessionFactory: " + sessionFactory.toString());
         Session session = sessionFactory.openSession();
         log.debug("Requesting Hibernate session...  Done.  " + session.toString());
@@ -80,8 +84,9 @@ public class BaseService extends SeerObject {
         }
 
         log.debug("Opening session...");
-        Session session = openSession();
+        Session session = null;
         try {
+            session = openSession();
             Map<String, String> filterMap = filterToMap(filter);
             Iterator<String> keys = filterMap.keySet().iterator();
             Criteria criteria = session.createCriteria(entityClass);
@@ -126,7 +131,7 @@ public class BaseService extends SeerObject {
             log.error("Unable to filter the " + entityType + " data (" + filter + ").", e);
             throw new ModelException("Unable to filter the " + entityType + " (" + filter + "). " + e.getMessage(), e);
         } finally {
-            session.close();
+            if (session != null) { session.close(); }
         }
     }
 
@@ -162,8 +167,9 @@ public class BaseService extends SeerObject {
 
     public List getAll() throws ModelException {
         log.debug("Service: getAll()  START");
-        Session session = openSession();
+        Session session = null;
         try {
+            session = openSession();
             List result = session.createQuery("from " + tableName).list();
             log.debug("Service: getAll()  Type=" + tableName + "  Result: " + result.size());
             logResultSet.debug("Result Set:");
@@ -174,14 +180,15 @@ public class BaseService extends SeerObject {
 
             throw new ModelException("Unable to retrieve the " + entityType + " list. " + e.getMessage());
         } finally {
-            session.close();
+            if (session != null) { session.close(); }
             log.debug("Service: getAll()  END");
         }
     }
 
     public int getRowCount() throws ModelException {
-        Session session = openSession();
+        Session session = null;
         try {
+            session = openSession();
             Long uniqueResult = (Long)session.createQuery("select count(*) from " + tableName).uniqueResult();
             int count = -1;
             if (uniqueResult != null) {
@@ -193,36 +200,45 @@ public class BaseService extends SeerObject {
             log.error("Unable to retrieve a count of the " + entityType + " list.", e);
             throw new ModelException("Unable to retrieve a count of the " + entityType + " list. " + e.getMessage());
         } finally {
-            session.close();
+            if (session != null) { session.close(); }
         }
     }
 
-    public List findByCriteria(Criterion criterion) {
-        Session session = openSession();
+    public List findByCriteria(Criterion criterion) throws ModelException {
+        Session session = null;
         try {
+            session = openSession();
             Criteria criteria = session.createCriteria(entityClass);
             criteria.add(criterion);
             List result = criteria.list();
             return result;
+        } catch (Exception e) {
+            log.error("Unable to retrieve a " + entityType + " list by criteria.", e);
+            throw new ModelException("Unable to retrieve a " + entityType + " list by criteria. " + e.getMessage());
         } finally {
-            session.close();
+            if (session != null) { session.close(); }
         }
     }
 
-    public Object findById(String id) {
-        Session session = openSession();
+    public Object findById(String id) throws ModelException {
+        Session session = null;
         try {
+            session = openSession();
             Object result = session.get(entityClass, id);
             return result;
+        } catch (Exception e) {
+            log.error("Unable to retrieve a " + entityType + " item by ID.", e);
+            throw new ModelException("Unable to retrieve a " + entityType + " item by ID. " + e.getMessage());
         } finally {
-            session.close();
+            if (session != null) { session.close(); }
         }
     }
 
     public void saveOrUpdate(Object entity) {
-        Session session = openSession();
         Transaction tx = null;
+        Session session = null;
         try {
+            session = openSession();
             Object name = getPropertyValue(entity, entityNameProperty);
             log.debug("Saving " + entityType + " " + name + "...");
             tx = session.beginTransaction();
@@ -234,16 +250,17 @@ public class BaseService extends SeerObject {
                 tx.rollback();
             }
         } finally {
-            session.close();
+            if (session != null) { session.close(); }
         }
     }
 
     public String save(Object entity) throws ModelException {
         try {
             if (entity != null) {
-                Session session = openSession();
                 Transaction tx = null;
+                Session session = null;
                 try {
+                    session = openSession();
                     Object name = getPropertyValue(entity, entityNameProperty);
                     log.debug("Saving " + entityType + " " + name + "...");
                     tx = session.beginTransaction();
@@ -257,7 +274,7 @@ public class BaseService extends SeerObject {
                     }
                     throw e;
                 } finally {
-                    session.close();
+                    if (session != null) { session.close(); }
                 }
             } else {
                 throw new ModelException("Expected a valid " + entityType + " but received null.");
@@ -277,9 +294,10 @@ public class BaseService extends SeerObject {
     public void update(Object entity) throws ModelException {
         try {
             if (entity != null) {
-                Session session = openSession();
                 Transaction tx = null;
+                Session session = null;
                 try {
+                    session = openSession();
                     Object name = getPropertyValue(entity, entityNameProperty);
                     log.debug("Updating " + entityType + " " + name + "...");
                     tx = session.beginTransaction();
@@ -292,7 +310,7 @@ public class BaseService extends SeerObject {
                     }
                     throw e;
                 } finally {
-                    session.close();
+                    if (session != null) { session.close(); }
                 }
             } else {
                 throw new ModelException("Expected a valid " + entityType + " but received null.");
@@ -306,9 +324,10 @@ public class BaseService extends SeerObject {
     public void delete(Object entity) throws ModelException {
         try {
             if (entity != null) {
-                Session session = openSession();
                 Transaction tx = null;
+                Session session = null;
                 try {
+                    session = openSession();
                     Object name = getPropertyValue(entity, entityNameProperty);
                     log.debug("Deleting " + entityType + " " + name + "...");
                     tx = session.beginTransaction();
@@ -321,7 +340,7 @@ public class BaseService extends SeerObject {
                     }
                     throw e;
                 } finally {
-                    session.close();
+                    if (session != null) { session.close(); }
                 }
             } else {
                 throw new Exception("Expected a valid " + entityType + " but received null.");

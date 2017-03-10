@@ -90,32 +90,37 @@ class Store extends ModelLoggable {
      }
 
      public String getSearchable() {
-         StringBuilder builder = new StringBuilder("|")
-         if (name != null) {
-             builder.append(name).append('|')
+         try {
+             StringBuilder builder = new StringBuilder("|")
+             if (name != null) {
+                 builder.append(name).append('|')
+             }
+             if (addr1 != null) {
+                 builder.append(addr1).append('|')
+             }
+             if (addr2 != null) {
+                 builder.append(addr2).append('|')
+             }
+             if (city != null) {
+                 builder.append(city).append(', ')
+             }
+             if (state != null) {
+                 builder.append(state).append(' ')
+             }
+             if (zip != null) {
+                 builder.append(zip).append('|')
+             }
+             if (website != null) {
+                 builder.append(website).append('|')
+             }
+             if (store_email != null) {
+                 builder.append(store_email).append('|')
+             }
+             return builder.toString()
+         } catch (Exception e) {
+             log.error("An error occurred processing Store.getSearchable().", e);
+             return "||";
          }
-         if (addr1 != null) {
-             builder.append(addr1).append('|')
-         }
-         if (addr2 != null) {
-             builder.append(addr2).append('|')
-         }
-         if (city != null) {
-             builder.append(city).append(', ')
-         }
-         if (state != null) {
-             builder.append(state).append(' ')
-         }
-         if (zip != null) {
-             builder.append(zip).append('|')
-         }
-         if (website != null) {
-             builder.append(website).append('|')
-         }
-         if (email != null) {
-             builder.append(store_email).append('|')
-         }
-         return builder.toString()
      }
 
 

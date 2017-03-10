@@ -216,6 +216,8 @@ ALTER TABLE `storeguide`.`user`
    ADD COLUMN `password` VARCHAR(20) NOT NULL AFTER `username`,
    ADD COLUMN `login_enabled` CHAR(1) NOT NULL AFTER `password`;
 
+INSERT INTO `storeguide`.`franchise` (`name`, `website`, `company_email`)
+   VALUES ('Target', 'http://www.target.com', 'atlantatechie@gmail.com');
 
 
 

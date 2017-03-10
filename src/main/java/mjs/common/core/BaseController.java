@@ -1,12 +1,14 @@
 package mjs.common.core;
 
 import mjs.common.exceptions.ModelException;
-import mjs.model.PrimaryKey;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * REST service used to retrieve, update, and delete user data
@@ -112,15 +114,40 @@ public class BaseController extends SeerObject {
         }
     }
 
+    public ResponseEntity insert(Model model, Object entity, BaseService service) {
+        String name = null;
+        try {
+            name = getPropertyValue(entity, entityNameProperty);
+            log.debug("   Inserting " + entityType + " " + name + "...");
+            String newPk = service.save(entity);
+            log.debug("   Inserting " + entityType + " " + name + "... Done.");
+
+            Map map = new HashMap();
+            map.put("key", newPk+"");
+            return createResponse(map, HttpStatus.OK);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return createResponseMsg("An error occurred updating " + entityType + " " + name + ". " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     public ResponseEntity update(Model model, Object entity, BaseService service) {
         String name = null;
         try {
             name = getPropertyValue(entity, entityNameProperty);
-            if (getPropertyValue(entity, entityPkProperty).equals("0")) {
+            String pk = getPropertyValue(entity, entityPkProperty);
+            if (pk.equals("0") || pk.equals("-1")) {
+                log.debug("   Inserting " + entityType + " " + name + "...");
                 String newPk = service.save(entity);
-                return createResponse(new PrimaryKey(newPk), HttpStatus.OK);
+                log.debug("   Inserting " + entityType + " " + name + "... Done.");
+
+                Map map = new HashMap();
+                map.put("key", newPk+"");
+                return createResponse(map, HttpStatus.OK);
             } else {
+                log.debug("   Updating " + entityType + " " + name + "...");
                 service.update(entity);
+                log.debug("   Updating " + entityType + " " + name + "... Done.");
                 return createResponseMsg("Successfully updated " + entityType + " " + name + ".", HttpStatus.OK);
             }
         } catch (Exception e) {
@@ -134,7 +161,7 @@ public class BaseController extends SeerObject {
     }
 
     protected ResponseEntity createResponseMsg(String msg, HttpStatus status) {
-        return new ResponseEntity(msg, status);
+        return new ResponseEntity("{msg:\"" + msg +"\"}", status);
     }
 
 }

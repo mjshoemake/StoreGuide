@@ -1,20 +1,17 @@
 package mjs.home.services;
 
-import java.util.List;
 import core.AbstractHibernateTest;
-import mjs.common.utils.LogUtils;
-import mjs.home.services.StoreService;
 import mjs.model.Franchise;
 import mjs.model.Store;
-import org.junit.Before;
-import org.junit.Test;
 
-public class StoreServiceTest extends AbstractHibernateTest {
+import java.util.List;
+
+public class StoreServiceHarness extends AbstractHibernateTest {
+
 
     StoreService storeSvc;
     FranchiseService franchiseSvc;
 
-    @Before
     public void setUp() throws Exception {
         super.setUp();
         franchiseSvc = new FranchiseService();
@@ -27,7 +24,6 @@ public class StoreServiceTest extends AbstractHibernateTest {
     /**
      * Test method.
      */
-    @Test
     public void testManageStores() {
         try {
             // Get a franchise from the list.
@@ -46,7 +42,7 @@ public class StoreServiceTest extends AbstractHibernateTest {
 
                 Store store = new Store();
                 store.setFranchise_pk(franchise.getFranchise_pk());
-                store.setName("Target");
+                store.setName("Test Target");
                 store.setAddr1("1525 Market Place Blvd");
                 store.setCity("Cumming");
                 store.setState("GA");
@@ -58,7 +54,7 @@ public class StoreServiceTest extends AbstractHibernateTest {
                 int pk = Integer.parseInt(storeSvc.save(store));
 
                 // Update the object with the new pk.
-                store.setFranchise_pk(pk);
+                store.setStore_pk(pk);
 
                 // Check result
                 list = storeSvc.getAll();
@@ -66,8 +62,8 @@ public class StoreServiceTest extends AbstractHibernateTest {
                     log.info("New store inserted successfully.");
                 }
 
-                Store loaded = (Store)storeSvc.getByPK(pk);
-                if (loaded.getAddr1().equals("1525 Market Place Blvd")) {
+                Store loaded = (Store) storeSvc.getByPK(pk);
+                if (loaded.getName().equals("Test Target")) {
                     log.info("Store retrieved successfully by PK.");
                 }
 
@@ -87,6 +83,16 @@ public class StoreServiceTest extends AbstractHibernateTest {
             assertFailed("Execution with no exceptions.  " + e.getMessage());
         } finally {
             //reportResults();         	
+        }
+    }
+
+    public static void main(String[] args) {
+        StoreServiceHarness harness = new StoreServiceHarness();
+        try {
+            harness.setUp();
+            harness.testManageStores();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
