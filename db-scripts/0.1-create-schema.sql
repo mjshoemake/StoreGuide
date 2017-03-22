@@ -218,6 +218,11 @@ ALTER TABLE `storeguide`.`user`
 
 INSERT INTO `storeguide`.`franchise` (`name`, `website`, `company_email`)
    VALUES ('Target', 'http://www.target.com', 'atlantatechie@gmail.com');
+INSERT INTO `storeguide`.`store` (`franchise_pk`, `name`, `addr1`, `city`, `state`, `zip`, `website`, `store_email`, `searchable`)
+   VALUES ('2', 'Cumming Target', '1525 Market Place Blvd', 'Cumming', 'GA', '30041', 'http://www.target.com/sl/cumming/1394', 'atlantatechie@gmail.com', '|Cumming Target|1525 Market Place Blvd|Cumming GA 30041|');
+INSERT INTO `storeguide`.`store` (`franchise_pk`, `name`, `addr1`, `city`, `state`, `zip`, `website`, `store_email`, `searchable`)
+   VALUES ('2', 'Alpharetta Target', '6000 North Point Pkwy', 'Alpharetta', 'GA', '30041', 'http://www.target.com/sl/alpharetta/970', 'atlantatechie@gmail.com', '|Alpharetta Target|6000 North Point Pkwy|Alpharetta GA 30041|');
+   
 
 
 

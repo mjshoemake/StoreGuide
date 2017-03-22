@@ -1,0 +1,254 @@
+/* Colors. */
+@footer-bg-color: #dddddd;  
+@selected-bg-color: #490582;
+@selected-font-color: #eeeeee; 
+@portlet-bg-color: #eddff6;
+@portlet-font-color: #111111;
+@header-gradient-top-color: @selected-bg-color;
+@header-gradient-bottom-color: #bfa9cb;
+@data-table-highlight-color: #f3e6fc;
+@data-table-header-bg-color: #490582;
+@data-table-header-font-color: #eeeeee; 
+//@panel-bg-color: #c19dda;
+@panel-header-bg-color: #eddff6;
+@panel-font-color: #111111;  
+@panel-border-color: white;
+@article-bg-color: #fbf0ff;
+
+/* Shoemake Theme #1.  */
+@font-face
+{
+	font-family: Michroma;
+	src: url(../fonts/michroma-webfont.woff);
+}
+@font-face
+{
+	font-family: "Andika";
+	src: url("../fonts/Andika-R.ttf");
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.page-header {
+	color: #490582;
+    border-bottom: 1px solid #490582;
+}
+
+h1, h2, h3, h4, h6, h6 {
+    margin-left: 0px;
+	font-family: Andika, Helvetica, sans-serif;
+}
+
+body {
+	font-family: Andika, Helvetica, sans-serif;
+	font-size: small;	    
+}
+
+header.container {
+    background: @header-gradient-top-color; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(@header-gradient-top-color, @header-gradient-bottom-color); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@header-gradient-top-color, @header-gradient-bottom-color); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@header-gradient-top-color, @header-gradient-bottom-color); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@header-gradient-top-color, @header-gradient-bottom-color); /* Standard syntax */
+}
+
+footer {
+	border-style: ridge;
+	padding: 6px 20px 6px 20px;
+	border-color: #999999 #eeeeee;
+	background: @footer-bg-color;
+	font-family: Andika, Helvetica, sans-serif;
+	font-size: small;	    
+}
+
+.half-width {
+	//width: 50%;
+}
+
+.clickable{
+    cursor: pointer;   
+}
+
+a:link {
+	color: @selected-bg-color;
+} 
+a:visited {
+	color: @selected-bg-color;
+} 
+a:hover {
+	color: @selected-bg-color;
+} 
+a:active {
+	color: @selected-bg-color;
+} 
+a.underline {
+	text-decoration: underline;
+}
+
+.panel-heading span {
+//	margin-top: -20px;
+	font-size: 15px;
+}
+
+ol.breadcrumb {
+	margin: 30px 0 0 0;
+}
+
+// Jumbotron 
+div.jumbotron {
+	margin: 20px 40px 0 0;
+	font-weight: 200;
+	line-height: 2.1428571435;
+	color: @portlet-font-color;
+	background-color: @portlet-bg-color;
+    border-color: @selected-bg-color;
+	padding: 9px 9px 9px 9px;
+}
+
+h4.jumbotron {
+	padding: 0 0 9px 0;
+	margin: 0 0 0 0;
+	line-height: 1;  
+	background-color: @portlet-bg-color;
+	font-family: Andika, Helvetica, Arial, sans-serif;
+	font-size: 180%;
+	font-weight: bold;
+	color: @portlet-font-color; 
+    border-color: @selected-bg-color;
+}
+
+p.jumbotron {
+	padding: 0 0 9px 0;
+	margin: 0 0 0 0;
+	background-color: @portlet-bg-color;
+	font-family: Andika, Helvetica, Arial, sans-serif;
+	line-height: 1.2;
+	color: @portlet-font-color;
+    border-color: @selected-bg-color;
+}
+
+.container .jumbotron {
+    border-radius: 6px;
+    border-color: @selected-bg-color;
+}
+
+// NavBar
+nav.navbar {
+	min-height: 0px;
+	background: black;
+}
+
+nav.navbar-default {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+nav.navbar-default > div.container-fluid {
+    padding: 6px 0px 6px 30px;
+	margin-left: 0px;	
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #000;
+	font-weight: bold;
+	margin: 0 0 0 0;
+}
+
+.navbar-default .navbar-nav>li.active>a, 
+.navbar-default .navbar-nav>li.active>a:hover, 
+.navbar-default .navbar-nav>li.active>a:focus {
+	color: #a32000;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #fff;
+    background: #ffffff; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ffffff, #aaaaaa); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ffffff, #aaaaaa); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ffffff, #aaaaaa); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ffffff, #aaaaaa); /* Standard syntax */
+}
+
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:focus {
+	color: #ffffff;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+    background: #ff8430; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ff8430, #a32000); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ff8430, #a32000); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ff8430, #a32000); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ff8430, a32000); /* Standard syntax */
+}
+
+// Panels
+div.panel {
+  border-color: @selected-bg-color;
+}
+
+div.panel > div.panel-heading {
+	color: @panel-font-color;
+	background-color: @panel-header-bg-color;
+	border-color: @panel-border-color;
+	font-weight: bold;
+	font-size: medium;
+}
+
+
+// Data Tables
+tr.highlight {
+    background-color: @data-table-highlight-color;
+}
+
+th {
+    background: @data-table-header-bg-color;
+    color: @data-table-header-font-color;
+    padding: 5px 0 5px 0;
+}
+
+td {
+    padding: 5px 0 5px 0;
+}
+
+
+// CSS3
+
+input.data:focus {
+    outline: none !important;
+    background-color: rgb(255,255,255,0.8);
+    border: 2px solid #ff8430;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.input:focus {
+    outline: none !important;
+    background-color: rgb(255,255,255,0.8);
+    border: 2px solid #ff8430;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+input:required {
+	background-color: rgba(255,0,0,0.10);
+}
+
+input.data:required {
+	background-color: rgb(255,0,0,0.10);
+}
+
+.grad1 {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(red, yellow); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, yellow); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, yellow); /* Standard syntax */
+}
+
+.article-bg {
+    background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(@article-bg-color, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@article-bg-color, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@article-bg-color, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@article-bg-color, white); /* Standard syntax */
+}

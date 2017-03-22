@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+             		    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+ 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+    <!-- LOCAL -->
+    <beans:bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/storeguide"/>
+        <beans:property name="username" value="root"/>
+        <beans:property name="password" value=""/>
+    </beans:bean>
+
+    <beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="myDataSource"/>
+        <beans:property name="packagesToScan" value="mjs.home.controllers, mjs.home.services, mjs.model" />
+        <beans:property name="mappingResources">
+            <beans:list>
+                <beans:value>mjs/hibernate/User.hbm.xml</beans:value>
+                <beans:value>mjs/hibernate/Franchise.hbm.xml</beans:value>
+                <beans:value>mjs/hibernate/Store.hbm.xml</beans:value>
+            </beans:list>
+        </beans:property>
+        <beans:property name="hibernateProperties">
+            <beans:value>
+                hibernate.dialect=org.hibernate.dialect.HSQLDialect
+                hibernate.show_sql=true
+            </beans:value>
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <beans:property name="dataSource" ref="myDataSource" />
+        <beans:property name="sessionFactory" ref="sessionFactory" />
+    </beans:bean>
+
+    <!-- Enable Hibernate transactions -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+    <resources mapping="/**" location="/" />
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven />
+    <context:component-scan base-package="mjs.home.controllers, mjs.home.services" />
+
+</beans:beans>
