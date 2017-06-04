@@ -71,7 +71,7 @@
         							<span class="icon-bar"></span>
         							<span class="icon-bar"></span>
       							</button>
-      							<img src="images/shopping-cart2.png" alt="Map My Shop" style="width:62px;height:50px;">
+								<img class="app-icon" src="images/shopping-cart2.png" alt="Map My Shop" style="width:62px;height:50px;"/>
     						</div>
 
    							<!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,21 +83,11 @@
 									<button type="submit" class="btn btn-default">Go!</button>
 								</form>
 								<ul class="nav navbar-nav navbar-right">
-									<li class="active"><a href="#">Browse</a></li>
-									<li><a href="#">About</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Action</a></li>
-											<li><a href="#">Another action</a></li>
-											<li><a href="#">Something else here</a></li>
-											<li role="separator" class="divider"></li>
-											<li><a href="#">Separated link</a></li>
-										</ul>
-									</li>
+									<li><a href="#"><img src="images/icon-store.png" alt="Stores" alt-text="Stores" height="42" width="42"></br>Stores</a></a></li>
+									<li><a href="#"><img src="images/icon-search.png" alt="Search" height="42" width="42"></br>Search</a></li>
+									<li><a href="#"><img src="images/icon-prefs.png" alt="Preferences" height="42" width="42"></br>Preferences</a></li>
 								</ul>
+      							<div class="site-title"><h1>&nbsp;Map My Shop</h1></div>
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>
@@ -112,14 +102,17 @@
 -->		
 		<article class="y-auto x-hidden container contentArea article-bg">
   			<div class="container-fluid">
+<!--  			
 				<h3 class="page-header section">Bootstrap Test Page</h3>
-
+-->
 				<!-- Breadcrumbs -->
-				<ol class="breadcrumb section">
-					<li><a href="#">User List</a></li>
-					<li><a href="#">View User</a></li>
-					<li class="active">Edit User</li>
-				</ol>
+				<div class="breadcrumbs section">
+					<ol class="breadcrumb">
+						<li><a href="#">User List</a></li>
+						<li><a href="#">View User</a></li>
+						<li class="active">Edit User</li>
+					</ol>
+				</div>		
 
 				<div class="alert alert-success alert-dismissable section">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -132,13 +125,13 @@
 					<p class="jumbotron">This part of the page is used to communicate helpful hints to the user while on this page.  The user should have the ability to turn off this hint using the "Don't Show This Anymore" button.</p>
 					<a href="#" class="btn btn-large btn-success">Don't Show This Anymore</a>
 				</div>
-
+<!--
 				<div class="progress progress-striped active section">
 					<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
 						<span class="sr-only">45% Complete</span>
 					</div>
 				</div>		            	
-
+-->
 				<div class="col-md-6 scrollable">
 					<div class="btn-group section">
 						<p>Here are some buttons...</p>
@@ -147,6 +140,7 @@
 						<button type="button" class="btn btn-default">Right</button>
 					</div>	
 
+<!--
 					<div class="section">
 						<p>Here are some MORE buttons...</p>
 						<a href="#" class="btn btn-large btn-warning">Warning</a>
@@ -188,7 +182,6 @@
 						</ul>
 					</div>
 
-					<!-- Accordion -->						
 					<div class="panel-group section" style="width: 550px;" id="accordion">
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -233,6 +226,7 @@
 							</div>
 						</div>
 					</div>
+-->
 				</div>
 				<div class="col-md-6 scrollable">
 					<div class="input-group section">
@@ -250,12 +244,15 @@
 							<li><a href="#">Messages</a></li>
 						</ul>
 					</div>	
-					<!--  removed panel-primary  -->
+					
+					<div class="panel panel-default section">
+						<div class="panel-body">
+							Basic panel example
+						</div>
+					</div>					
+					
 					<div class="panel panel-primary section" style="width: fill;">
 						<div class="panel-heading">
-<!--
-							<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
--->
 				        	<a class="underline" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
         						User List
         					</a>
@@ -296,9 +293,8 @@
 								</table>					
 					    	</div>
     					</div>
-
-
-					</div>			            			
+					</div>					
+								            			
 				</div>			            			
 			</div>			            			
 		</article>            		
@@ -307,9 +303,11 @@
 		</footer>            		
 
 		<!-- Bootstrap -->
-<!--		<script src="js/jquery-3.2.0.js"></script>  -->
+<!--
+		<script src="js/jquery-3.2.0.js"></script>  
 		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/angular.min.js"></script>
+-->		
 	</body>
 </html>

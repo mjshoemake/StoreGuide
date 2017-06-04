@@ -13,7 +13,8 @@ module.exports = function(grunt) {
           // destination file and source file       
           "src/main/webapp/css/theme1.css": "less/theme1.less",
           "prototype/css/theme1.css": "less/theme1.less" 
-
+          //"src/main/webapp/css/headroom.css": "less/headroom.less",
+          //"prototype/css/headroom.css": "less/headroom.less" 
         }
       }
     },
