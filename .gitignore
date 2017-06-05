@@ -541,3 +541,5 @@ target/test-classes/mjs/home/controllers/FranchiseControllerHarness.class
 target/test-classes/mjs/home/controllers/StoreControllerHarness.class
 target/test-classes/mjs/home/services/FranchiseServiceHarness.class
 target/test-classes/mjs/home/services/StoreServiceHarness.class
+prototype/css/theme1.css
+src/main/webapp/css/theme1.css

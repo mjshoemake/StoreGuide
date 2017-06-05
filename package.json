@@ -1,5 +1,5 @@
 {
-  "name": "HomeMgr",
+  "name": "storeguide",
   "version": "1.0.0",
   "description": "Shoemake Home Manager",
   "main": "Gruntfile.js",
@@ -10,19 +10,20 @@
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-preset-es2015": "^6.22.0",
-    "grunt": "~0.4.5",
-    "grunt-contrib-less": "~0.11.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "jit-grunt": "~0.7.0"
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^0.11.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "jit-grunt": "^0.7.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjshoemake/HomeMgr"
+    "url": "git+https://github.com/mjshoemake/HomeMgr.git"
   },
   "author": "Mike Shoemake",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mjshoemake/HomeMgr/issues"
   },
-  "homepage": "https://github.com/mjshoemake/HomeMgr"
+  "homepage": "https://github.com/mjshoemake/HomeMgr",
+  "dependencies": {}
 }
