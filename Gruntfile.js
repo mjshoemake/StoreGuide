@@ -12,9 +12,11 @@ module.exports = function(grunt) {
         files: {
           // destination file and source file       
           "src/main/webapp/css/theme1.css": "less/theme1.less",
-          "prototype/css/theme1.css": "less/theme1.less" 
-          //"src/main/webapp/css/headroom.css": "less/headroom.less",
-          //"prototype/css/headroom.css": "less/headroom.less" 
+          "prototype/css/theme1.css": "less/theme1.less", 
+          "src/main/webapp/css/theme2.css": "less/theme2.less",
+          "prototype/css/theme2.css": "less/theme2.less", 
+          "src/main/webapp/css/headroom.css": "less/headroom.less",
+          "prototype/css/headroom.css": "less/headroom.less" 
         }
       }
     },

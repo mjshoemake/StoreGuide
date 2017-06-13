@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=”utf-8”>		 
+	    <title>Shoemake Management & Chronicles</title>
+		<!-- Bootstrap -->
+		<!--
+		<link href="css/layout.css" rel="stylesheet"/> 
+		-->
+		<link href="css/cssReset.css" rel="stylesheet"/>
+		<link href="css/theme2.css" rel="stylesheet"/> 
+		<link rel="stylesheet" href="css/headroom.css" />
+		<link href="css/bootstrap.css" rel="stylesheet"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script language="Javascript">
+		</script>  
+	</head>
+	<body>
+		<header id="header" class="header header--fixed hide-from-print" role="banner">
+			<div class="container-fluid" >
+
+<!--	
+				<nav id="nav" class="nav-wrapper" role="navigation">
+					<ul class="nav nav--main">
+						<li class="nav__item ">
+							<a class="header__link subdued" href="https://www.github.com/WickyNilliams/headroom.js">
+								<span aria-hidden="true" class="icon icon--github"></span>
+								<span class="complimentary push--left">Stores</span>
+							</a>
+						</li>
+						<li class="nav__item ">
+							<a class="header__link subdued" href="https://www.twitter.com/WickyNilliams">
+								<span aria-hidden="true" class="icon icon--twitter"></span>
+								<span class="complimentary push--left">Preferences</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+-->
+
+					<nav class="navbar navbar-default">
+  						<div class="container-fluid">
+    						<!-- Brand and toggle get grouped for better mobile display -->
+        					<div class="navbar-header">
+        						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        							<span class="sr-only">Toggle navigation</span>
+        							<span class="icon-bar"></span>
+        							<span class="icon-bar"></span>
+        							<span class="icon-bar"></span>
+      							</button>
+					<img class="app-icon" src="images/shopping-cart2.png" alt="Map My Shop" style="width:31px;height:25px;"/>
+					<b class="brand__forename">Map</b>
+					<b class="brand__surname">my</b>
+					<b class="brand__forename">Shop</b>
+    						</div>
+
+   							<!-- Collect the nav links, forms, and other content for toggling -->
+    						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<form class="navbar-form navbar-right">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Search">
+									</div>
+									<button type="submit" class="btn btn-default">Go!</button>
+								</form>
+								<ul class="nav navbar-nav navbar-right">
+									<li class="nav"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+									<li class="nav"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Stores</a></li>
+									<li class="nav"><a href="#"><span class="glyphicon glyphicon-search"></span>&nbsp;Search</a></li>
+									<li class="nav"><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;Preferences</a></li>
+								</ul>
+							</div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav>
+			</div>
+		</header>
+
+		<article>
+		<header class="feature">
+			<div class="container container-fluid feature-title">
+				<h2 class="feature-title__title headroom-title">My Stores</h2>
+				<p class="feature-title__subtitle">This is your list of stores.  You can add a store by clicking the plus sign.  To select a store, click the store image.</p>
+			</div>
+		</header>
+
+		<div class="container block main" role="main">
+
+		<h2>Downloads</h2>
+		<div class="downloads" style="margin-bottom:1em">
+			<div class="grid">
+				<div class="grid__item one-half"><a class="btn btn--secondary btn--full" href="https://raw.github.com/WickyNilliams/headroom.js/master/dist/headroom.js">Development <span class="complimentary subdued">(3.7kB)</span></a></div>
+				<div class="grid__item one-half"><a class="btn btn--secondary btn--full" href="https://raw.github.com/WickyNilliams/headroom.js/master/dist/headroom.min.js">Production <span class="complimentary subdued">(1.7kB)</span></a></div>
+			</div>
+		</div>
+
+		<h2>What's it all about?</h2>
+
+		<p>Headroom.js is a lightweight, high-performance JS widget (with no dependencies!) that allows you to react to the user's scroll. The header on this site is a living example, it slides out of view when scrolling down and slides back in when scrolling up.</p>
+
+		<h3>Why use it?</h3>
+
+		<p>Fixed headers are a popular approach for keeping the primary navigation in close proximity to the user. This can reduce the effort required for a user to quickly navigate a site, but they are not without problems&hellip; </p>
+
+		<p>Large screens are usually landscape-oriented, meaning less vertical than horizontal space. A fixed header can therefore occupy a significant portion of the content area. Small screens are typically used in a portrait orientation. Whilst this results in more vertical space, because of the overall height of the screen a meaningfully-sized header can still be quite imposing.</p>
+
+		<p>Headroom.js allows you to bring elements into view when appropriate, and give focus to your content the rest of the time.</p>
+
+		<h3>How does it work?</h3>
+
+		<p>At it's most basic headroom.js simply adds and removes CSS classes from an element in response to a scroll event:</p>
+
+		<pre class="language-markup"><code>&lt;!-- initially --&gt;
+		&lt;header class="headroom"&gt;
+
+		&lt;!-- scrolling down --&gt;
+		&lt;header class="headroom headroom--unpinned"&gt;
+
+		&lt;!-- scrolling up --&gt;
+		&lt;header class="headroom headroom--pinned"&gt;
+		</code></pre>
+
+		<p>Relying on CSS classes affords headroom.js incredible flexibility. The choice of what to do when scrolling up or down is now entirely yours - anything you can do with CSS you can do in response to the user's scroll.</p>
+
+		<h2>Usage</h2>
+
+		<p>Using headroom.js is really simple. It has a pure JS API, and an optional jQuery/Zepto-compatible plugin.</p>
+
+		<h3>With pure JS</h3>
+
+		<pre class="language-javascript"><code>// grab an element
+		var myElement = document.querySelector("header");
+		// construct an instance of Headroom, passing the element
+		var headroom  = new Headroom(myElement);
+		// initialise
+		headroom.init(); 
+		</code></pre>
+
+		<h3>With jQuery/Zepto</h3>
+
+		<pre class="language-javascript"><code>// simple as this!
+		// NOTE: init() is implicitly called with the plugin
+		$("# header").headroom();
+		</code></pre>
+
+		<p>The plugin also offers a data-* API if you prefer a declarative approach.</p>
+
+		<pre class="language-markup"><code>&lt;!-- selects $(&quot;[data-headroom]&quot;) --&gt;
+		&lt;header data-headroom&gt;
+		</code></pre>
+
+		<p>Note: Zepto's additional <a href="https://github.com/madrobby/zepto#zepto-modules" title="https://github.com/madrobby/zepto#zepto-modules">data module</a> is required for compatibility.</p>
+
+		<h3>Options</h3>
+
+		<p>Headroom.js can also accept an options object to alter the way it behaves. You can see the default options by inspecting <code>Headroom.options</code>. The structure of an options object is as follows:</p>
+
+		<pre class="language-javascript"><code>{
+			// vertical offset in px before element is first unpinned
+			offset : 0,
+			// scroll tolerance in px before state changes
+			tolerance : 0,
+			// css classes to apply
+			classes : {
+				// when element is initialised
+				initial : "headroom",
+				// when scrolling up
+				pinned : "headroom--pinned",
+				// when scrolling down
+				unpinned : "headroom--unpinned"
+			}
+		}
+		</code></pre>
+
+			<h2>Examples</h2>
+			<p>
+				Head over to the <a href="http://wicky.nillia.ms/headroom.js/playroom/">headroom.js playroom</a> if you want see some example usages. There you can tweak all of headroom's options and apply different CSS effects in an interactive demo.
+			</p>
+
+			<h2>License</h2>
+			<p>
+				Licensed under the <a href="https://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+			</p>
+
+		  <div class="sharing">
+			<h2>Share this on:</h2>
+			<div class="grid">
+			  <div class="grid__item one-third">
+				<a class="sharing__button btn btn--secondary btn--full" href="https://facebook.com/sharer.php?u=http://wicky.nillia.ms/headroom.js/">Facebook</a>
+			  </div>
+			  <div class="grid__item one-third">
+				<a class="sharing__button btn btn--secondary btn--full" href="https://twitter.com/intent/tweet?url=http://wicky.nillia.ms/headroom.js/&amp;text=Headroom.js. Give your pages some headroom&amp;via=WickyNilliams">Twitter</a>
+			  </div>
+			  <div class="grid__item one-third">
+				<a class ="sharing__button btn btn--secondary btn--full" href="https://plus.google.com/share?url=http://wicky.nillia.ms/headroom.js/">Google+</a>
+			  </div>
+			</div>
+		  </div>
+
+
+			</div>
+			<a class="btt btn btn--plain hide-from-print" href="#" id="btt">Top <i class="icon icon--up"></i></a>
+		</article>
+
+		<script src="https://rawgithub.com/WickyNilliams/headroom.js/gh-pages/assets/scripts/main.js"></script>
+		<script src="js/slidingHeader.js"></script>
+
+	</body>
+</html>

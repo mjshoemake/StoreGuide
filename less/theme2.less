@@ -1,0 +1,89 @@
+/* Colors. */
+@footer-bg-color: #490582; 
+@footer-font-color: #eeeeee; 
+@selected-bg-color: #490582;
+@selected-font-color: #eeeeee;
+@panel-bg-color: #ffffff; 
+@portlet-bg-color: #eddff6;
+@portlet-font-color: #111111;
+@header-gradient-top-color: @selected-bg-color;
+@header-gradient-bottom-color: #bfa9cb;
+@data-table-highlight-color: #f3e6fc;
+@data-table-header-bg-color: #490582;
+@data-table-header-font-color: #eeeeee; 
+//@panel-bg-color: #c19dda;
+@panel-header-bg-color: #eddff6;
+@panel-font-color: #111111;  
+@panel-border-color: white;
+@article-bg-color: #fbf0ff;
+@article-band-color1: #ebe1f5;
+
+body {
+	//font-family: Andika, Helvetica, sans-serif;
+	font-size: small;	    
+	// NOTE: ONLY FOR PROTOTYPE
+	//width: 100%;
+	//height: 100%;
+	//margin: 0;
+	//display: flex;
+	//flex-direction: column;
+	//flex-wrap: nowrap;
+	background-color: white;
+	//background-size: 100%;	
+}
+
+body:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    //left: 0;
+    //top: 0;
+    //width: 100%;
+    //height: 100%;
+    //z-index: 1;
+    opacity: 0.6;
+    background-image: url('../images/maze.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+// NavBar
+nav.navbar {
+	background: inherit;
+	margin-bottom: 0;
+	border: none;
+}
+
+nav.navbar-default {
+	background-color: inherit;
+	border-color: inherit;
+	margin-bottom: 0;
+}
+
+nav.navbar-default .navbar-nav > li > a {
+	color: #d6d8f3;
+	//font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+
+nav.navbar-default ul.navbar-nav > li > a:hover, 
+nav.navbar-default ul.navbar-nav> li > a:focus {
+	color: #ffffff;
+	//font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+
+nav.navbar-default ul.navbar-nav>li.active>a, 
+nav.navbar-default ul.navbar-nav>li.active>a:hover, 
+nav.navbar-default ul.navbar-nav>li.active>a:focus {
+	color: #ffffff;
+	//font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+
+
