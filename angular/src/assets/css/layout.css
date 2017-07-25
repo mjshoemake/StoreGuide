@@ -1,0 +1,179 @@
+/* Fixed header/footer, scrolling content.  */
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+// NOTE: ONLY FOR PROTOTYPE
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+app-root {
+	width: 100%;
+	min-height: 100vh;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+header, footer, article {
+	align-self: stretch;
+}
+
+div.banner {
+	position: fixed;
+	background: red;
+	width: 100%;
+	height: 80px;
+}
+
+header {
+    flex: 0 0 auto;
+}
+
+.header--fixed {
+}
+
+header.container {
+    width: 100%;
+    padding, margin: 0 0 0 0;
+}
+
+footer {
+	flex: 0 0 auto;
+}
+
+footer.container {
+    width: 100%;
+    padding, margin: 0;
+}
+
+article.container {
+    width: 100%;
+	flex: 1 1 100%;
+	position: relative;
+    height: 100%;
+}
+
+.section, div.section {
+	margin: 30px 40px 0 40px;
+	font-size: small;
+}
+
+.expanded {
+	width: 100%;
+	height: 100%;
+}
+
+/*
+header.headroom {
+	position: fixed;
+	//z-index:10;
+	right: 0;
+	left: 0;
+	top: 0;
+    transition: transform .25s ease-in-out;
+    will-change: transform;
+}
+header.headroom--pinned {
+    transform: translateY(0%);
+}
+header.headroom--unpinned {
+    transform: translateY(-100%);
+}
+*/
+
+/*
+header.headroom {
+	position: fixed;
+	//z-index:10;
+	right: 0;
+	left: 0;
+	top: 0
+	transition: all .2s ease-in-out;
+	will-change: transform;
+}
+header.headroom--unpinned {top: -75px;}
+header.headroom--pinned {top: 0;}
+*/
+
+
+/*
+
+.flexcol {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	padding-left: 20px;
+	padding-right: 20px;
+} 
+
+.flexcolWrap {
+	margin: 0;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding-left: 20px;
+	padding-right: 20px;
+} 
+
+.flexrow {
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	margin-top: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+} 
+
+.flexrowWrap {
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+} 
+*/
+
+.y-auto {
+	overflow-y: auto;
+}
+
+.y-hidden {
+	overflow-y: hidden;
+}
+
+.x-hidden {
+	overflow-x: hidden;
+}
+
+div p {
+	margin: 0 0 12px 0;
+}
+
+p {
+	margin: 20px 40px 0 0;
+}
+
+.inline {
+	display: inline;
+}
+
+.page-header {
+	margin: 30px 0 30px 40px;
+	font-size: 210%;
+}
+
+
+

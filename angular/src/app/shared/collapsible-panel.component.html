@@ -1,0 +1,18 @@
+
+<!--
+<div class="panel panel-primary section width-fill" style="{{panelStyle}}">
+// Removed panelStyle because Safari says style is readonly.
+-->
+<div class="panel panel-primary section width-fill">
+  <div class="panel-heading">
+    <a class="accordion-toggle" data-toggle="collapse" target="_self" data-parent="#accordion" href="#collapse-{{id}}">
+      {{title}}
+    </a>
+  </div>
+  <div id="collapse-{{id}}" class="panel-collapse {{collapseClass}}">
+    <div class="panel-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+

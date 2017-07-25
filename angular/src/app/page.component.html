@@ -1,0 +1,256 @@
+
+<appHeader [brandForename]="brandForename" [headerDisplay]="headerDisplay" [brandSurname]="brandSurname" [brandIcon]="brandIcon" [navItems]="navItems"></appHeader>
+
+<article>
+  <header class="feature">
+    <div class="container container-fluid feature-title">
+      <h2 class="feature-title__title headroom-title">{{pageName}}</h2>
+      <p class="feature-title__subtitle">{{subTitle}}</p>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+
+    <router-outlet></router-outlet>
+
+<!--
+    <div class="panel panel-primary section width-fill">
+      <div class="panel-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+          Former Managers
+        </a>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="panel-group" id="accordion">
+
+            <div class="panel panel-default subsection">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1a">
+                  <b>Chip Owen</b> - Mike's Director of Development at Amplify
+                </a>
+              </div>
+              <div id="collapse1a" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <div id="shortRef1" style="display: block;">
+                    <b>Excerpts:</b><br/>
+                    <p>"I have known and worked with Mike for nearly fifteen years. I have worked with Mike
+                      at three different companies. I hired Mike at two of these companies and I would hire
+                      Mike again."<br/> ... <br/>"Overall, Mike is hardworking, pays attention to detail, is reliable,
+                      friendly, well regarded by his teammates and peers, cares about his teammates and learns and
+                      applies new technologies quickly. Mike would make a fantastic addition to any development team."</p>
+                    <a href="javascript:void(0)" onclick="showLongRef(1)">[SHOW MORE]</a>
+                  </div>
+                  <div id="longRef1" style="display: none;">
+                    <p>"I have known and worked with Mike for nearly fifteen years. I have worked with Mike at
+                      three different companies. I hired Mike at two of these companies and I would hire Mike again.</p>
+
+                    <p>At Mike's latest job, Amplify, I hired Mike as a developer to work on a portion of a product
+                      that was implemented in a technology stack that was new to Mike. Mike quickly learned the new
+                      technology stack and product requirements and was contributing to the implementation of this
+                      product in a very short period of time.</p>
+
+                    <p>Later at Amplify, I asked Mike to step into a development manager role that had recently become
+                      available. Mike stepped into this role under difficult circumstances: different technology stack,
+                      different business requirements, new development team, compressed schedule. Mike quickly stepped
+                      into the role, mastered the new technology stack and requirements and gained the confidence and
+                      respect of the development team. Mike led the team through a number of successful sprints delivering
+                      on time with quality.</p>
+
+                    <p>Mike is a passionate practitioner of the Agile methodology. He has a great deal of experience
+                      applying Agile principles but can be quite flexible and pragmatic in the application of Agile
+                      methodologies.</p>
+
+                    <p>Overall, Mike is hardworking, pays attention to detail, is reliable, friendly, well regarded by his
+                      teammates and peers, cares about his teammates and learns and applies new technologies quickly.
+                      Mike would make a fantastic addition to any development team."</p>
+                    <a href="javascript:void(0)" onclick="showShortRef(1)">[SHOW LESS]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default subsection">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1b">
+                  <b>Neil Sambol</b> - Mike's Director of Development at Amplify
+                </a>
+              </div>
+              <div id="collapse1b" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div id="shortRef2" style="display: block;">
+                    <b>Excerpts:</b><br/>
+                    <p>"Mike is a kind and generous soul that thoroughly embodies "Servant Leadership" principles."<br/> ... <br/>
+                      "Mike is not content to manage from the back-row. He has VERY strong Java skills and is in the
+                      trenches with his team working on the most difficult problems."<br/> ... <br/>
+                      "As a Java Developer, a Software Development Manager, or as a Scrum Master Mike is a team player
+                      and well liked and respected by his peers, his team and his manager."</p>
+                    <a href="javascript:void(0)" onclick="showLongRef(2)">[SHOW MORE]</a>
+                  </div>
+                  <div id="longRef2" style="display: none;">
+                    <p>"Mike is a kind and generous soul that thoroughly embodies "Servant Leadership" principles.
+                      Instead of cracking the whip, he supports, nurtures, and mentors his team. As a ScrumMaster and
+                      manager, he removes impediments from his team and lets them run at top speed. The team responds with
+                      amazing loyalty and devotion.</p>
+
+                    <p>Mike is not content to manage from the back-row. He has VERY strong Java skills and is in the
+                      trenches with his team working on the most difficult problems. His team respects and admires him;
+                      his product owner adores him.</p>
+
+                    <p>As a Java Developer, a Software Development Manager, or as a Scrum Master Mike is a team player
+                      and well liked and respected by his peers, his team and his manager. I recommend him wholeheartedly
+                      in any and all of those positions or combination thereof."</p>
+                    <a href="javascript:void(0)" onclick="showShortRef(2)">[SHOW LESS]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default subsection">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1c">
+                  <b>Joe Davidson</b> - Mike's Development Manager at Amplify
+                </a>
+              </div>
+              <div id="collapse1c" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div id="shortRef3" style="display: block;">
+                    <b>Excerpts:</b><br/>
+                    <p>"He grew quickly with his java background learning Groovy/Grails to build the BMC from the ground up."<br/> ... <br/>
+                      "For the past year, Mike has been an Engineering Manager on key modules in our Content Delivery tablet
+                      application. Mike has demonstrated his skills in handling demanding deadlines, complex functional requirements,
+                      and integrating with multiple teams working in an overlapping code base."</p>
+                    <a href="javascript:void(0)" onclick="showLongRef(3)">[SHOW MORE]</a>
+                  </div>
+                  <div id="longRef3" style="display: none;">
+                    <p>"I have enjoyed working with Mike for 3 years here at Amplify. He joined our team working on the Content
+                      Publishing and Book Management Console projects. He grew quickly with his java background learning Groovy/Grails
+                      to build the BMC from the ground up. He created a rules engine that adapted the JSON output to match a changing
+                      target API allowing us to keep the systems communicating in spite of the moving target. He worked long and hard
+                      to adapt the publishing app as we received new ePub formats from Harper-Collins and other book publishers. Each
+                      new source had subtle "new features" that would not be found until we processed sample books. Mike inevitably sorted
+                      out the quirks and anomalies keeping us on-track as new book formats arrived.</p>
+
+                    <p>For the past year, Mike has been an Engineering Manager on key modules in our Content Delivery tablet
+                      application. Mike has demonstrated his skills in handling demanding deadlines, complex functional requirements,
+                      and integrating with multiple teams working in an overlapping code base. I look forward to the opportunity to
+                      work with Mike in the future."</p>
+                    <a href="javascript:void(0)" onclick="showShortRef(3)">[SHOW LESS]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary section width-fill">
+      <div class="panel-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+          Former Employees
+        </a>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="panel-group" id="accordion2">
+
+            <div class="panel panel-default subsection">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2a">
+                  <b>Darren Nelsen</b> - Web UI Developer on Mike's Team at Amplify
+                </a>
+              </div>
+              <div id="collapse2a" class="panel-collapse collapse collapse">
+                <div class="panel-body">
+                  <div id="shortRef4" style="display: block;">
+                    <b>Excerpts:</b><br/>
+                    <p>"Mike is one of the best dev managers I've worked with in my entire career."<br/> ... <br/>
+                      "He sets a great tone, staying levelheaded and lighthearted amongst chaos. He provides excellent insight
+                      into technical issues, knows how to work with outside vendors, seamlessly handles cross team communication
+                      and coordination."</p>
+                    <a href="javascript:void(0)" onclick="showLongRef(4)">[SHOW MORE]</a>
+                  </div>
+                  <div id="longRef4" style="display: none;">
+                    <p>"Mike is one of the best dev managers I've worked with in my entire career. He's honest,
+                      straightforward, understanding, diplomatic, technical, and funny. I've immensely enjoyed
+                      working with Mike as a member of the digital curriculum team at Amplify. He looks out for
+                      his team members and makes sure everyone has what they need. He sets a great tone, staying
+                      levelheaded and lighthearted amongst chaos. He provides excellent insight into technical issues,
+                      knows how to work with outside vendors, seamlessly handles cross team communication and coordination.
+                      Plus, he makes us laugh. I'm grateful every day for the opportunity to work with Mike. It's been a
+                      lot of fun. I'd work with him again any time."</p>
+                    <a href="javascript:void(0)" onclick="showShortRef(4)">[SHOW LESS]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default subsection">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2b">
+                  <b>Keith Eisla</b> - Web UI Developer on Mike's Team at Amplify
+                </a>
+              </div>
+              <div id="collapse2b" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div id="shortRef5" style="display: block;">
+                    <b>Excerpts:</b><br/>
+                    <p>"Mike has been the best dev manager I have worked for."<br/> ... <br/>
+                      "He really looks after his team to help them grow and give them opportunities to improve themselves in their
+                      career path. On a personal level he is very easy going and fun to talk to."</p>
+                    <a href="javascript:void(0)" onclick="showLongRef(5)">[SHOW MORE]</a>
+                  </div>
+                  <div id="longRef5" style="display: none;">
+                    <p>"Mike has been the best dev manager I have worked for. He is always upfront and open about everything
+                      going on in the company and the team. He really looks after his team to help them grow and give them
+                      opportunities to improve themselves in their career path. On a personal level he is very easy going and
+                      fun to talk to. There is never a dull moment when we are in the office together. It is really hard to find
+                      a person you can get along with on a personal and business level who is really looking out for your well-being.
+                      I am extremely grateful to have had the opportunity to work with Mike and without a doubt I would gladly work
+                      with him again and I hope I do."</p>
+                    <a href="javascript:void(0)" onclick="showShortRef(5)">[SHOW LESS]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default subsection">
+              <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2c">
+                  <b>Brad Wiederholt</b> - Web UI Developer on Mike's Team at Amplify
+                </a>
+              </div>
+              <div id="collapse2c" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div id="shortRef6" style="display: block;">
+                    <b>Excerpt:</b><br/>
+                    <p>"Mike led the team during a high-stress time: product needs were constantly shifting and Mike used his skills as manager
+                      and agile process expert to keep the team moving to worthwhile goals. In addition to these skills, Mike was able to contribute
+                      to the team as a software developer as well, and was instrumental in shaping the new microservices the team was producing."</p>
+                    <a href="javascript:void(0)" onclick="showLongRef(6)">[SHOW MORE]</a>
+                  </div>
+                  <div id="longRef6" style="display: none;">
+                    <p>"During my contract with Amplify, Mike served as team lead and oversaw the development of all software related to
+                      in-classroom education and testing. Classwork was a crucial part of the Amplify application, and only seasoned
+                      professionals were involved in the management and creation of these pieces. Mike led the team during a high-stress
+                      time: product needs were constantly shifting and Mike used his skills as manager and agile process expert to keep
+                      the team moving to worthwhile goals. In addition to these skills, Mike was able to contribute to the team as a software
+                      developer as well, and was instrumental in shaping the new microservices the team was producing. I welcome the
+                      opportunity to work with Mike in future engagements."</p>
+                    <a href="javascript:void(0)" onclick="showShortRef(6)">[SHOW LESS]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+-->
+  </div>
+
+  <a id="back-to-top" class="btt btn btn--plain hide-from-print top-btn" href="#" id="btt">Back To Top <i class="icon icon--up"></i></a>
+</article>

@@ -1,0 +1,15 @@
+<div class="panel panel-primary subsection" style="width: fill;">
+  <div class="panel-heading">
+    <a class="accordion-toggle" data-toggle="collapse" target="_self" href="#collapse-{{id}}">
+    <!--  (click)="onClick()" -->
+    {{title}}
+<!--      {{pretitle}}<b>{{boldtitle}}</b>{{posttitle}} -->
+    </a>
+  </div>
+  <div id="collapse-{{id}}" class="panel-collapse {{collapseClass}}">
+    <div class="panel-body {{panelClass}}">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+

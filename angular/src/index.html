@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+    <base href="/angular2/"/>
+		<meta charset=”utf-8”/>
+    <title>Crossewalk Software</title>
+
+		<!-- Styles -->
+		<link href="assets/css/cssReset.css" rel="stylesheet"/>
+		<link href="assets/css/bootstrap.css" rel="stylesheet"/>
+		<link href="assets/css/headroom.css" rel="stylesheet"/>
+		<link href="assets/css/theme2.0.3.css" rel="stylesheet"/>
+
+		<!-- Icon -->
+		<link rel="icon" href="assets/images/crossewalk3.ico"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<!-- Javascript -->
+		<script src="assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/js/back-to-top.js"></script>
+
+		<!-- Angular2 Dependencies -->
+		<script src="https://code.angularjs.org/tools/system.js"></script>
+		<script>
+			System.config({
+				transpiler: 'typescript',
+				typescriptOptions: { emitDecoratorMetadata: true },
+				packages: {'app': {defaultExtension: 'ts'}},
+				map: { 'app': './angular2/src/app' }
+			});
+    	</script>
+	</head>
+	<body>
+    <app-root style="height: 100%; width: 100%;"></app-root>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="https://rawgithub.com/WickyNilliams/headroom.js/gh-pages/assets/scripts/main.js"></script>
+    <script src="assets/js/slidingHeader.js"></script>
+
+  </body>
+</html>
