@@ -23,12 +23,12 @@ export class PageComponent  {
 	showBreadcrumbs: boolean = true;
 	showHint: boolean = true;
 	headerDisplay: string = 'block';
-	brandForename: string = 'Crossewalk';
-	brandSurname: string = 'Software';
+	brandForename: string = 'Map My Shop';
+	brandSurname: string = '';
 
 	brandIcon = new BrandIcon({
 			image: 'assets/images/crossewalk3.png',
-			displayText: 'Crossewalk'
+			displayText: 'Map My Shop'
 		});
 
 	navItems: NavItem[] = []

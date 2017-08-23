@@ -17,6 +17,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.JDBCConnectionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +40,7 @@ public class BaseService extends SeerObject {
     protected final String entityPkProperty;
     protected final String entityType;
     protected final String tableName;
+    boolean ignoreJDBCConnectionExceptions = false;
 
     public BaseService(String entityClass,
                        String entityType,
@@ -127,6 +129,11 @@ public class BaseService extends SeerObject {
             logResultSet.debug("Result Set:");
             LogUtils.debug(logResultSet, result, "   ", true);
             return result;
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to filter the " + entityType + " data (" + filter + ").", e);
+            }
+            throw new ModelException("Unable to filter the " + entityType + " (" + filter + "). " + e.getMessage(), e);
         } catch (Exception e) {
             log.error("Unable to filter the " + entityType + " data (" + filter + ").", e);
             throw new ModelException("Unable to filter the " + entityType + " (" + filter + "). " + e.getMessage(), e);
@@ -159,6 +166,11 @@ public class BaseService extends SeerObject {
             }
         } catch (ModelException e) {
             throw e;
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to retrieve this " + entityType + " (" + id + ").", e);
+            }
+            throw new ModelException("Unable to retrieve this " + entityType + " (" + id + "). " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to retrieve this " + entityType + " (" + id + ").", e);
             throw new ModelException("Unable to retrieve this " + entityType + " (" + id + "). " + e.getMessage());
@@ -175,6 +187,11 @@ public class BaseService extends SeerObject {
             logResultSet.debug("Result Set:");
             LogUtils.debug(logResultSet, result, "   ", true);
             return result;
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Service: getAll()  Type=" + tableName + "  Unable to retrieve the " + entityType + " list.", e);
+            }
+            throw new ModelException("Unable to retrieve the " + entityType + " list. " + e.getMessage());
         } catch (Exception e) {
             log.error("Service: getAll()  Type=" + tableName + "  Unable to retrieve the " + entityType + " list.", e);
 
@@ -196,6 +213,11 @@ public class BaseService extends SeerObject {
             }
             log.debug("Service: getRowCount()  Type=" + tableName + "  Result: " + count);
             return count;
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to retrieve a count of the " + entityType + " list.", e);
+            }
+            throw new ModelException("Unable to retrieve a count of the " + entityType + " list. " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to retrieve a count of the " + entityType + " list.", e);
             throw new ModelException("Unable to retrieve a count of the " + entityType + " list. " + e.getMessage());
@@ -212,6 +234,11 @@ public class BaseService extends SeerObject {
             criteria.add(criterion);
             List result = criteria.list();
             return result;
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to retrieve a " + entityType + " list by criteria.", e);
+            }
+            throw new ModelException("Unable to retrieve a " + entityType + " list by criteria. " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to retrieve a " + entityType + " list by criteria.", e);
             throw new ModelException("Unable to retrieve a " + entityType + " list by criteria. " + e.getMessage());
@@ -226,6 +253,11 @@ public class BaseService extends SeerObject {
             session = openSession();
             Object result = session.get(entityClass, id);
             return result;
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to retrieve a " + entityType + " item by ID.", e);
+            }
+            throw new ModelException("Unable to retrieve a " + entityType + " item by ID. " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to retrieve a " + entityType + " item by ID.", e);
             throw new ModelException("Unable to retrieve a " + entityType + " item by ID. " + e.getMessage());
@@ -279,6 +311,11 @@ public class BaseService extends SeerObject {
             } else {
                 throw new ModelException("Expected a valid " + entityType + " but received null.");
             }
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to save the specified " + entityType + ".", e);
+            }
+            throw new ModelException("Unable to save the specified " + entityType + ". " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to save the specified " + entityType + ".", e);
             throw new ModelException("Unable to save the specified " + entityType + ". " + e.getMessage());
@@ -315,6 +352,11 @@ public class BaseService extends SeerObject {
             } else {
                 throw new ModelException("Expected a valid " + entityType + " but received null.");
             }
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to save the specified " + entityType + ".", e);
+            }
+            throw new ModelException("Unable to save the specified " + entityType + ". " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to save the specified " + entityType + ".", e);
             throw new ModelException("Unable to save the specified " + entityType + ". " + e.getMessage());
@@ -340,14 +382,37 @@ public class BaseService extends SeerObject {
                     }
                     throw e;
                 } finally {
-                    if (session != null) { session.close(); }
+                    if (session != null) {
+                        session.close();
+                    }
                 }
             } else {
                 throw new Exception("Expected a valid " + entityType + " but received null.");
             }
+        } catch (JDBCConnectionException e) {
+            if (! ignoreJDBCConnectionExceptions) {
+                log.error("Unable to delete this " + entityType + ".", e);
+            }
+            throw new ModelException("Unable to delete this " + entityType + ". " + e.getMessage());
         } catch (Exception e) {
             log.error("Unable to delete this " + entityType + ".", e);
             throw new ModelException("Unable to delete this " + entityType + ". " + e.getMessage());
         }
+    }
+
+    /**
+     * If this is set to true, the service will not log JDBCConnectionException.
+     * @param value boolean
+     */
+    public void setJDBCConnectionExceptionIgnored(boolean value) {
+        ignoreJDBCConnectionExceptions = value;
+    }
+
+    /**
+     * If this is set to true, the service will not log JDBCConnectionException.
+     * @return boolean
+     */
+    public boolean isJDBCConnectionExceptionIgnored() {
+        return ignoreJDBCConnectionExceptions;
     }
 }
