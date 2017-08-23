@@ -1,111 +1,73 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset=”utf-8”>		 
-	    <title>Shoemake Management & Chronicles</title>
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.css" rel="stylesheet"/>
+	    <title>Map My Shop</title>
+
+		<!-- Styles -->
 		<link href="css/cssReset.css" rel="stylesheet"/>
-		<link href="css/theme1.css" rel="stylesheet"/> 
-		<link href="css/layout.css" rel="stylesheet"/> 
+		<link href="css/bootstrap.css" rel="stylesheet"/>
+		<link href="css/headroom.css" rel="stylesheet"/>
+		<link href="css/theme2.0.3.css" rel="stylesheet"/>
+
+		<link rel="icon" href="images/treasure-map2-640.png">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/back-to-top.js"></script>
+
 		<script type="text/javascript">
-		  var geocoder;
-		  var map;
-		  var address ="2325 Bethelview Rd, Cumming, GA 30040";
-		  
-		  function initialize() {
-		    console.log('initialize() start');
-			geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.LatLng(-34.397, 150.644);
-			var myOptions = {
-			  zoom: 14,
-			  center: latlng,
-			mapTypeControl: true,
-			mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-			navigationControl: true,
-			  mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-			if (geocoder) {
-			  geocoder.geocode( { 'address': address}, function(results, status) {
-				if (status == google.maps.GeocoderStatus.OK) {
-				  if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-				  map.setCenter(results[0].geometry.location);
+            var geocoder;
+            var map;
+            var address ="2325 Bethelview Rd, Cumming, GA 30040";
 
-					var infowindow = new google.maps.InfoWindow(
-						{ content: '<b>'+address+'</b>',
-						  size: new google.maps.Size(150,50)
-						});
+            function initialize() {
+				console.log('initialize() start');
+				geocoder = new google.maps.Geocoder();
+				var latlng = new google.maps.LatLng(-34.397, 150.644);
+				var myOptions = {
+					zoom: 14,
+					center: latlng,
+					mapTypeControl: true,
+					mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+					navigationControl: true,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+				if (geocoder) {
+					geocoder.geocode( { 'address': address}, function(results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+							if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+								map.setCenter(results[0].geometry.location);
 
-					var marker = new google.maps.Marker({
-						position: results[0].geometry.location,
-						map: map, 
-						title:address
-					}); 
-					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.open(map,marker);
+								var infowindow = new google.maps.InfoWindow(
+									{ content: '<b>'+address+'</b>',
+									  size: new google.maps.Size(150,50)
+								});
+
+								var marker = new google.maps.Marker({
+									position: results[0].geometry.location,
+									map: map,
+									title:address
+								});
+
+								google.maps.event.addListener(marker, 'click', function() {
+									infowindow.open(map,marker);
+								});
+							} else {
+								alert("No results found");
+							}
+						} else {
+							alert("Geocode was not successful for the following reason: " + status);
+						}
 					});
-
-				  } else {
-					alert("No results found");
-				  }
-				} else {
-				  alert("Geocode was not successful for the following reason: " + status);
 				}
-			  });
 			}
-		  }
-		</script>
+        </script>
 	</head>
-	<body>
-		<header class="container header">
-<!--
-			<div id="site-branding" class="site-branding">
-				<div class="container">
-                    <div class="site-branding-text">
-						<h1 class="site-title"><a href="http://localhost:8888/" rel="home">Map My Shop</a></h1>
-						<h2 class="site-description">Helping You Find What You Need</h2>
-					</div>
-				</div>
-			</div>
--->
-
-<!--		
-			<div class="row-liquid">
-				<div class="container">
--->				
-					<!-- Nav Bar -->
-<!--					
-					<nav class="navbar" role="navigation">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">File</a></li>
-								<li class="disabled"><a href="#">Edit</a></li>
-								<li><a href="#">Text</a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">View <b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li class="disabled"><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</nav>            
--->
+	<body background="images/map-bg-1920.jpg">
+		<header id="header" class="header header--fixed hide-from-print" role="banner">
+			<div class="container-fluid" >
 
 					<nav class="navbar navbar-default">
   						<div class="container-fluid">
@@ -117,133 +79,125 @@
         							<span class="icon-bar"></span>
         							<span class="icon-bar"></span>
       							</button>
-								<img class="app-icon" src="images/shopping-cart2.png" alt="Map My Shop" style="width:62px;height:50px;"/>
+								<img class="app-icon" src="images/treasure-map2-640.png" alt="Crossewalk" style="width:32px;height:28px; vertical-align: middle;"/>
+								<b class="brand__forename">Map My Shop</b>
     						</div>
 
    							<!-- Collect the nav links, forms, and other content for toggling -->
     						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<form class="navbar-form navbar-right">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Search">
-									</div>
-									<button type="submit" class="btn btn-default">Go!</button>
-								</form>
 								<ul class="nav navbar-nav navbar-right">
-									<li><a href="#"><img src="images/icon-store.png" alt="Stores" alt-text="Stores" height="42" width="42"></br>Stores</a></a></li>
-									<li><a href="#"><img src="images/icon-search.png" alt="Search" height="42" width="42"></br>Search</a></li>
-									<li><a href="#"><img src="images/icon-prefs.png" alt="Preferences" height="42" width="42"></br>Preferences</a></li>
+<!--									<li class="nav"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li> -->
+									<li class="nav"><a href="resume.html"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Stores</a></li>
+									<li class="nav"><a href="#"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Search</a></li>
+									<li class="nav"><a href="#"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Preferences</a></li>
 								</ul>
-      							<div class="site-title"><h1>&nbsp;Map My Shop</h1></div>
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>
-
-<!--
-				</div>
 			</div>
--->		
-		</header> 
+		</header>
+
+		<article>
+			<header class="feature">
+				<div class="container container-fluid feature-title">
+					<h2 class="feature-title__title headroom-title">Planning</h2>
+					<p class="feature-title__subtitle">You have selected a store location. You can create, copy, or modify a shopping list to use for your trip to the store.  Once that's done, you can head to the store and Map My Shop will guide you through the best route to buy the items on our list.</p>
+
+                    <div class="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">My Stores</a></li>
+                            <li><a href="view-kroger.html">Kroger</a></li>
+                            <li class="active">Bethelview Location</li>
+                        </ol>
+                    </div>
+				</div>
+			</header>
+
+			<div class="container-fluid">
 <!--
-		<article id="contentArea" class="container scrollable contentArea">
--->		
-		<article class="y-auto x-hidden container contentArea article-bg">
-  			<div class="container-fluid">
-<!--  			
-				<h3 class="page-header section">Bootstrap Test Page</h3>
+				<div class="panel panel-primary section center width-300">
+					<div class="panel-body">
+						<img class="best-fit" src="images/frustrated-shopper2.png" alt="" alt-text="">
+					</div>
+				</div>
 -->
-				<!-- Breadcrumbs -->
-				<div class="breadcrumbs section">
-					<ol class="breadcrumb">
-						<li><a href="index.html">My Stores</a></li>
-						<li><a href="view-kroger.html">Kroger</a></li>
-						<li class="active">Bethelview Location</li>
-					</ol>
-				</div>		
 
-				<!-- Jumbotron Example -->
-				<div class="jumbotron section overflow-auto">
-					<img class="float-right" src="images/stores/store-kroger.png" alt="" alt-text="" height="150px">
-					<h4 class="jumbotron">Hints</h4>
-					<p class="jumbotron">You have selected a store location. You can create, copy, or modify a shopping list to use for your trip to the store.  Once that's done, you can head to the store and Map My Shop will guide you through the best route to buy the items on our list.</p>
-					<a href="#" class="btn btn-large btn-success">Don't Show Anymore</a>
-				</div>
+<!--
+                <div class="panel panel-primary section" style="width: fill;">
+                    <div id="map_canvas" style="width:300px; height:250px"></div>
+                    <div>
+                        <h2>Kroger - Bethelview Location</h2>
+                        <h4>2325 Bethelview Rd</h4>
+                        <h4>Cumming, GA 30040</h4>
+                    </div>
+                </div>
+-->
 
-				<div class="panel panel-primary section" style="width: fill;">
-					<div id="map_canvas" style="width:300px; height:250px"></div>
-					<div>
-						<h2>Kroger - Bethelview Location</h2>
-						<h4>2325 Bethelview Rd</h4>
-						<h4>Cumming, GA 30040</h4>
-					</div>
-				</div>
-
-				<div class="panel panel-primary section" style="width: fill;">
-					<div class="panel-heading">
-						<a class="underline" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-							Shopping Lists
-						</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="#"><img src="images/icon-plus.png" alt="Add Shopping List" alt-text="Add Shopping List" height="20" width="20"></a>
-					</div>
-					<div id="collapse1" class="panel-collapse collapse in">
-						<div class="panel-body">
-							<table width="100%">
-								<tr>
-									<th width="40px"><input type="checkbox"/></th> 
-									<th>Description</th>
-									<th>Created On</th>
-									<th>Used On</th>
-								</tr>
-								<tr>
-									<td><input type="checkbox"/></td> 
-									<td><a href="#">Big Shop After Pay Day</a></td> 
-									<td>5/27/2017</td> 
-									<td></td> 
-								</tr>
-								<tr class="highlight">
-									<td class="highlight"><input type="checkbox"/></td> 
-									<td class="highlight"><a href="#">Quick Refills</a></td> 
-									<td class="highlight">5/24/2017</td> 
-									<td class="highlight">5/24/2017</td> 
-								</tr>							
-								<tr>
-									<td><input type="checkbox"/></td> 
-									<td><a href="#">Hubbie Emergency Trip</a></td> 
-									<td>5/20/2017</td> 
-									<td>5/20/2017</td> 
-								</tr>
-								<tr class="highlight">
-									<td class="highlight"><input type="checkbox"/></td> 
-									<td class="highlight"><a href="#">Big Shop After Pay Day</a></td> 
-									<td class="highlight">5/2/2017</td> 								
-									<td class="highlight">5/3/2017</td> 
-								</tr>
-								<tr>
-									<td><input type="checkbox"/></td> 
-									<td><a href="#">Birthday Party Supplies</a></td> 
-									<td>4/21/2017</td> 
-									<td>4/23/2017</td> 
-								</tr>
-								<tr class="highlight">
-									<td class="highlight"><input type="checkbox"/></td> 
-									<td class="highlight"><a href="#">Need Kombucha!!!</a></td> 
-									<td class="highlight">4/17/2017</td> 
-									<td class="highlight">4/17/2017</td> 
-								</tr>
-							</table>					
-						</div>
-					</div>
-				</div>					
-		            			
-			</div>			            			
+                <div class="panel panel-primary section" style="width: fill;">
+                    <div class="panel-heading">
+                        <a class="underline" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            Shopping Lists
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#"><img src="images/icon-plus.png" alt="Add Shopping List" alt-text="Add Shopping List" height="20" width="20"></a>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table width="100%">
+                                <tr>
+                                    <th width="40px"><input type="checkbox"/></th>
+                                    <th>Description</th>
+                                    <th>Created On</th>
+                                    <th>Used On</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td><a href="#">Big Shop After Pay Day</a></td>
+                                    <td>5/27/2017</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="highlight">
+                                    <td class="highlight"><input type="checkbox"/></td>
+                                    <td class="highlight"><a href="#">Quick Refills</a></td>
+                                    <td class="highlight">5/24/2017</td>
+                                    <td class="highlight">5/24/2017</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td><a href="#">Hubbie Emergency Trip</a></td>
+                                    <td>5/20/2017</td>
+                                    <td>5/20/2017</td>
+                                </tr>
+                                <tr class="highlight">
+                                    <td class="highlight"><input type="checkbox"/></td>
+                                    <td class="highlight"><a href="#">Big Shop After Pay Day</a></td>
+                                    <td class="highlight">5/2/2017</td>
+                                    <td class="highlight">5/3/2017</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td><a href="#">Birthday Party Supplies</a></td>
+                                    <td>4/21/2017</td>
+                                    <td>4/23/2017</td>
+                                </tr>
+                                <tr class="highlight">
+                                    <td class="highlight"><input type="checkbox"/></td>
+                                    <td class="highlight"><a href="#">Need Kombucha!!!</a></td>
+                                    <td class="highlight">4/17/2017</td>
+                                    <td class="highlight">4/17/2017</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</article>            		
-  		<footer class="container footer"> 
-  		    This is the footer. This should stay at the bottom.
-		</footer>            		
+
+		<script src="https://rawgithub.com/WickyNilliams/headroom.js/gh-pages/assets/scripts/main.js"></script>
 
 		<!-- Bootstrap -->
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script src="js/bootstrap.js"></script>		
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANtxQ75svceBN_EbPi09ieItu6n815nGw&callback=initialize"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/slidingHeader.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANtxQ75svceBN_EbPi09ieItu6n815nGw&callback=initialize"></script>
 	</body>
 </html>
